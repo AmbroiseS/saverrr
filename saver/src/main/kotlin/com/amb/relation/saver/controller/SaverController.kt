@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RestController
 class SaverController {
 
     @GetMapping("/gen")
-    fun getMessage(): String {
-
-        return "First Iteration"
+    fun getMessage(): Saverrr {
+        return Saverrr("First iteration")
     }
 
-
 }
+
+data class Saverrr(var message: String)

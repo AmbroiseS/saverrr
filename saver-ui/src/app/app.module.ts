@@ -8,6 +8,8 @@ import { MainComponent } from './main/main.component';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatButtonModule} from '@angular/material/button'; 
 import {MatCardModule} from '@angular/material/card';  
+import { HttpClientModule } from '@angular/common/http';
+import { ApiServices } from './services/api.services';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,14 @@ import {MatCardModule} from '@angular/material/card';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     MatButtonModule,
     MatChipsModule,
     MatCardModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ApiServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

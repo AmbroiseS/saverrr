@@ -12,7 +12,12 @@
             <mat-chip-option color="accent" selected>Accent fish</mat-chip-option>
             <mat-chip-option color="warn">Warn fish</mat-chip-option>
         </mat-chip-listbox>
-        <button mat-raised-button color="primary">Generate</button>
+        <button mat-raised-button color="primary" (click)="generate()">Generate</button>
+
+    <div>
+        {{message}}
+
+    </div>
 
     </div>
 </body> 

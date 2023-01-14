@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiServices } from '../services/api.services';
 
 
 @Component({
@@ -7,5 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
+  constructor(private api: ApiServices) { }
 
+  message = '';
+
+  generate() {
+    this.api.generateMessage().subscribe(
+      {
+        next: (data) => this.message = data.message,
+        error: (error) => this.message = 'failed to fetch'
+      })
+  }
 }
