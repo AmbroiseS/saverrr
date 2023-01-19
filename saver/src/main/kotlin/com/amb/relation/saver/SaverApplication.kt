@@ -6,10 +6,6 @@ import org.springframework.context.annotation.Bean
 import org.springframework.web.filter.CommonsRequestLoggingFilter
 import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
-import simplenlg.framework.NLGElement
-import simplenlg.framework.NLGFactory
-import simplenlg.lexicon.Lexicon
-import simplenlg.realiser.english.Realiser
 
 
 @SpringBootApplication
@@ -29,14 +25,14 @@ class SaverApplication {
     fun corsConfigurer(): WebMvcConfigurer? {
         return object : WebMvcConfigurer {
             override fun addCorsMappings(registry: CorsRegistry) {
-                registry.addMapping("/*").allowedOrigins("http://localhost:4200")
+                registry.addMapping("/*").allowedOrigins("*")
             }
         }
     }
 }
 
 fun main(args: Array<String>) {
-	runApplication<SaverApplication>(*args)
+    runApplication<SaverApplication>(*args)
 }
 
 
