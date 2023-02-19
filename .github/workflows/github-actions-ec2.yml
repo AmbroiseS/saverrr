@@ -1,0 +1,29 @@
+
+name: Push-to-EC2
+
+# Trigger deployment only on push to main branch
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to EC2 on main branch push
+    runs-on: [self-hosted, linux]
+
+    steps:
+      - name: Checkout the files
+        uses: actions/checkout@v2
+
+      - name: Deploy to Server 1
+        uses: easingthemes/ssh-action@main
+        env:
+          SSH_PRIVATE_KEY: ${{secrets.EC2_SSH_KEY}}
+          REMOTE_HOST: ${{secrets.HOST_DNS}}
+          REMOTE_USER: ${{secrets.USERNAME}}
+          script: |
+            cd ~
+            docker login -u ${{secrets.DOCKER_USERNAME}} -p  ${{secrets.DOCKER_PWD}}
+            docker run -d -p 8080:8080 ambroise123/saverrr:latest
+            

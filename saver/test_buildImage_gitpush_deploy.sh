@@ -9,7 +9,8 @@ docker build . -t ambroise123/saverrr:"$(git rev-parse --short HEAD)" -t ambrois
 echo '****************************************'
 echo 'push image to registry'
 echo '****************************************'
-docker push ambroise123/saverrr:"$(git rev-parse --short HEAD)"
+docker push ambroise123/saverrr --all-tags
+
 
 echo '****************************************'
 echo 'push code'
