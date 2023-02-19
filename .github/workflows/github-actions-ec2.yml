@@ -13,27 +13,8 @@ jobs:
     runs-on: [self-hosted, linux]
 
     steps:
-
-      - name: Configure SSH
+      - name: Launch
         run: |
-          mkdir -p ~/.ssh/
-          echo "$SSH_KEY" > ~/.ssh/staging.key
-          chmod 600 ~/.ssh/staging.key
-          cat >>~/.ssh/config <<END
-          Host staging
-            HostName $SSH_HOST
-            User $SSH_USER
-            IdentityFile ~/.ssh/staging.key
-            StrictHostKeyChecking no
-          END
-        env:
-          SSH_USER: ${{ secrets.USERNAME }}
-          SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
-          SSH_HOST: ${{ secrets.HOST_DNS }}
-
-      - name: Deploy to Server 1
-        run: |
-          cd ~
           docker login -u ${{secrets.DOCKER_USERNAME}} -p  ${{secrets.DOCKER_PWD}}
           docker run -d -p 8080:8080 ambroise123/saverrr:latest
             
