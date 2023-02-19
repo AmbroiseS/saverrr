@@ -7,8 +7,6 @@ class SaverApplicationTests {
 
 	@Test
 	fun contextLoads() {
-		test()
-
 	}
 
 }
